@@ -1,0 +1,34 @@
+{
+  "name": "dwing-redis",
+  "version": "0.0.3",
+  "description": "Redis MySQL封装优化",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run compile",
+    "compile": "./node_modules/.bin/babel src --out-dir dist",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/airdwing/node-dwing-redis.git"
+  },
+  "keywords": [
+    "api",
+    "sdk",
+    "open",
+    "redis",
+    "db",
+    "cache"
+  ],
+  "author": "Willin Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/airdwing/node-dwing-redis/issues"
+  },
+  "homepage": "https://github.com/airdwing/node-dwing-redis#readme",
+  "dependencies": {
+    "promise-redis": "^0.0.5",
+    "redis-commands": "^1.2.0",
+    "dwing-common": "^1.0.0"
+  }
+}
