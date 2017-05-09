@@ -1,12 +1,10 @@
 {
   "name": "dwing-redis",
-  "version": "0.0.3",
+  "version": "1.0.3",
   "description": "Redis MySQL封装优化",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm run compile",
-    "compile": "./node_modules/.bin/babel src --out-dir dist",
-    "prepublish": "npm run compile"
+    
   },
   "repository": {
     "type": "git",
