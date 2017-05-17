@@ -1,6 +1,6 @@
 const { list } = require('redis-commands');
 const redis = require('promise-redis');
-const { md5 } = require('wulian-common');
+const { md5 } = require('dwing-common');
 
 // SELECT FOR SPECIAL TREATMENT
 list.splice(list.indexOf('select'), 1);
