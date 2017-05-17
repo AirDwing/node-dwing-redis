@@ -1,6 +1,6 @@
-import {list} from 'redis-commands';
-import redis from 'promise-redis';
-import {md5} from 'wulian-common';
+const { list } = require('redis-commands');
+const redis = require('promise-redis');
+const { md5 } = require('wulian-common');
 
 // SELECT FOR SPECIAL TREATMENT
 list.splice(list.indexOf('select'), 1);
