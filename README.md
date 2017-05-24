@@ -1,21 +1,17 @@
-# Dwing-Redis
+# Dwing Redis
 
-[![npm](https://img.shields.io/npm/v/dwing-redis.svg?style=plastic)](https://npmjs.org/package/dwing-redis) [![npm](https://img.shields.io/npm/dt/dwing-redis.svg?style=plastic)](https://npmjs.org/package/dwing-redis)
+[![npm](https://img.shields.io/npm/v/@dwing/redis.svg?style=plastic)](https://npmjs.org/package/@dwing/redis) [![npm](https://img.shields.io/npm/dt/@dwing/redis.svg?style=plastic)](https://npmjs.org/package/@dwing/redis)
 
 ## 安装
 
 ```
-npm install dwing-redis --save
+npm install @dwing/redis --save
 ```
-
-## 维护者
-
-Willin: <https://github.com/willin> 求粉，求加组织
 
 ## ES7 使用
 
 ```js
-import redis from 'dwing-redis';
+const redis = require('@dwing/redis');
 
 const client = redis({
   host: '127.0.0.1',
@@ -44,3 +40,10 @@ const client = redis({
 })();
 ```
 
+## License
+
+MIT
+
+通过支付宝捐赠：
+
+![qr](https://cloud.githubusercontent.com/assets/1890238/15489630/fccbb9cc-2193-11e6-9fed-b93c59d6ef37.png)

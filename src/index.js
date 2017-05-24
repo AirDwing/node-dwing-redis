@@ -1,6 +1,6 @@
 const { list } = require('redis-commands');
 const redis = require('promise-redis');
-const { md5 } = require('dwing-common');
+const { md5 } = require('@dwing/common');
 
 // SELECT FOR SPECIAL TREATMENT
 list.splice(list.indexOf('select'), 1);
@@ -34,7 +34,7 @@ module.exports = function createRedisClient(options = {}, logger = console.log) 
     createClient(dbX);
     const methods = {};
     list.forEach((method) => {
-      methods[method] = exports[method] = async(...args) => {
+      methods[method] = exports[method] = async (...args) => {
         if (db[key][dbX] === null) {
           // 异步,不然请求会阻塞
           (() => {
@@ -48,7 +48,7 @@ module.exports = function createRedisClient(options = {}, logger = console.log) 
     return methods;
   };
   list.forEach((method) => {
-    result[method] = exports[method] = async(...args) => {
+    result[method] = exports[method] = async (...args) => {
       if (db[key][dbN] === null) {
         // 异步,不然请求会阻塞
         (() => {

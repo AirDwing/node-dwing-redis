@@ -1,14 +1,12 @@
 {
-  "name": "dwing-redis",
-  "version": "1.0.5",
+  "name": "@dwing/redis",
+  "version": "1.0.0",
   "description": "Redis MySQL封装优化",
   "main": "src/index.js",
   "engines": {
     "node": ">= 6.9.0"
   },
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/airdwing/node-dwing-redis.git"
@@ -28,8 +26,15 @@
   },
   "homepage": "https://github.com/airdwing/node-dwing-redis#readme",
   "dependencies": {
-    "promise-redis": "^0.0.5",
-    "redis-commands": "^1.2.0",
-    "dwing-common": "^1.0.0"
+    "@dwing/common": "*",
+    "promise-redis": "*",
+    "redis-commands": "*"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1"
   }
 }

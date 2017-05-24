@@ -1,4 +1,4 @@
-{
+module.exports = {
   "env": {
     "node": true,
     "es6": true
@@ -15,5 +15,5 @@
     "consistent-return": 1,
     "no-underscore-dangle": [2, { "allowAfterThis": true }]
   },
-  "extends": "airbnb/base"
-}
+  "extends": "airbnb"
+};
