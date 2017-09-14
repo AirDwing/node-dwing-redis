@@ -11,7 +11,7 @@ const db = {};
  * @param  {obj} options Redis连接参数
  * @return {obj} Redis Client
  */
-/* eslint no-console: 0 */
+/* eslint-disable no-console, no-multi-assign, no-return-await */
 module.exports = function createRedisClient(options = {}, logger = console.log) {
   const key = md5(JSON.stringify(options));
   const createClient = (selectedDB) => {
@@ -22,7 +22,7 @@ module.exports = function createRedisClient(options = {}, logger = console.log) 
       db[key][selectedDB] = redis().createClient(options);
       db[key][selectedDB].select(selectedDB || 0);
       db[key][selectedDB].on('error', (err) => {
-        logger('wulian:redis:client', err);
+        logger('dwing:redis:client', err);
         db[key][selectedDB] = null;
       });
     }
