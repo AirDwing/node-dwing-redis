@@ -1,6 +1,7 @@
 const { list } = require('redis-commands');
-const redis = require('promise-redis');
+const redis = require('redis');
 const { md5 } = require('@dwing/common');
+const { promisify } = require('util');
 
 // SELECT FOR SPECIAL TREATMENT
 list.splice(list.indexOf('select'), 1);
@@ -11,7 +12,7 @@ const db = {};
  * @param  {obj} options Redis连接参数
  * @return {obj} Redis Client
  */
-/* eslint-disable no-console, no-multi-assign, no-return-await */
+/* eslint-disable no-console, no-multi-assign */
 module.exports = function createRedisClient(options = {}, logger = console.log) {
   const key = md5(JSON.stringify(options));
   const createClient = (selectedDB) => {
@@ -19,45 +20,31 @@ module.exports = function createRedisClient(options = {}, logger = console.log) 
       db[key] = {};
     }
     if (!db[key][selectedDB]) {
-      db[key][selectedDB] = redis().createClient(options);
+      db[key][selectedDB] = redis.createClient(options);
       db[key][selectedDB].select(selectedDB || 0);
+      /* istanbul ignore next */
       db[key][selectedDB].on('error', (err) => {
         logger('dwing:redis:client', err);
         db[key][selectedDB] = null;
       });
     }
-  };
-  const dbN = options.db || 0;
-  createClient(dbN);
-  const result = {};
-  result.select = (dbX) => {
-    createClient(dbX);
-    const methods = {};
+    const result = {};
+    result.select = createClient;
     list.forEach((method) => {
-      methods[method] = exports[method] = async (...args) => {
-        if (db[key][dbX] === null) {
+      result[method] = exports[method] = (...args) => {
+        /* istanbul ignore if */
+        if (db[key][selectedDB] === null) {
           // 异步,不然请求会阻塞
           (() => {
-            createClient(dbX);
+            createClient(selectedDB);
           })();
           return null;
         }
-        return await db[key][dbX][method](args);
+        const promiseFn = promisify(db[key][selectedDB][method]).bind(db[key][selectedDB]);
+        return promiseFn(args);
       };
     });
-    return methods;
+    return result;
   };
-  list.forEach((method) => {
-    result[method] = exports[method] = async (...args) => {
-      if (db[key][dbN] === null) {
-        // 异步,不然请求会阻塞
-        (() => {
-          createClient(dbN);
-        })();
-        return null;
-      }
-      return await db[key][dbN][method](args);
-    };
-  });
-  return result;
+  return createClient(options.db || 0);
 };

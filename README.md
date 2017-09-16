@@ -1,11 +1,11 @@
 # Dwing Redis
 
-[![npm](https://img.shields.io/npm/v/@dwing/redis.svg?style=plastic)](https://npmjs.org/package/@dwing/redis) [![npm](https://img.shields.io/npm/dt/@dwing/redis.svg?style=plastic)](https://npmjs.org/package/@dwing/redis)
+[![github](https://img.shields.io/github/followers/willin.svg?style=social&label=Follow)](https://github.com/willin) [![npm](https://img.shields.io/npm/v/@dwing/redis.svg)](https://npmjs.org/package/@dwing/redis) [![npm](https://img.shields.io/npm/dt/@dwing/redis.svg)](https://npmjs.org/package/@dwing/redis) [![codecov](https://codecov.io/gh/AirDwing/node-dwing-redis/branch/master/graph/badge.svg)](https://codecov.io/gh/AirDwing/node-dwing-redis) [![Travis-CI](https://travis-ci.org/AirDwing/node-dwing-redis.svg?branch=master)](https://travis-ci.org/AirDwing/node-dwing-redis) [![codebeat badge](https://codebeat.co/badges/9a510e01-2f09-4112-86c7-4dc780d868c5)](https://codebeat.co/projects/github-com-airdwing-node-dwing-redis-master)
 
 ## 安装
 
 ```
-npm install @dwing/redis --save
+yarn add @dwing/redis
 ```
 
 ## ES7 使用

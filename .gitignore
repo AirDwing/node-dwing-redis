@@ -1,6 +1,10 @@
 node_modules/
+.nyc_output/
 dist/
 docs/
+demo/
 
+.DS_Store
 *.log
+*.log.*
 dump.rdb
