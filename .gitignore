@@ -8,3 +8,4 @@ demo/
 *.log
 *.log.*
 dump.rdb
+coverage.lcov

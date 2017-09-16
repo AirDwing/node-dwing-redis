@@ -7,7 +7,8 @@
     "node": ">= 8.0.0"
   },
   "scripts": {
-    "test": "nyc ava -vs && nyc report --reporter=text-lcov > coverage.lcov | codecov",
+    "test": "nyc ava -vs",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov | codecov",
     "start": "nyc --reporter html ava -vs && open ./.nyc_output/index.html"
   },
   "ava": {
