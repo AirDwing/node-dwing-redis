@@ -40,6 +40,36 @@ const client = redis({
 })();
 ```
 
+## Subscribe / Publish
+
+```js
+const redis = require('@dwing/redis');
+
+// 需要不同的配置以保证连接不被复用。
+const sub = redis({ test: 1 }).client;
+const pub = redis({ test: 2 }).client;
+
+let msgCount = 0;
+
+sub.on('subscribe', () => {
+  pub.publish('a nice channel', 'I am sending a message.');
+  pub.publish('a nice channel', 'I am sending a second message.');
+  pub.publish('a nice channel', 'I am sending my last message.');
+});
+
+sub.on('message', (channel, message) => {
+  console.log(`sub channel ${channel}: ${message}`);
+  msgCount += 1;
+  if (msgCount === 3) {
+    sub.unsubscribe();
+    sub.quit();
+    pub.quit();
+  }
+});
+
+sub.subscribe('a nice channel');
+```
+
 ## License
 
 MIT

@@ -44,6 +44,7 @@ module.exports = function createRedisClient(options = {}, logger = console.log) 
         return promiseFn(args);
       };
     });
+    result.client = db[key][selectedDB];
     return result;
   };
   return createClient(options.db || 0);
